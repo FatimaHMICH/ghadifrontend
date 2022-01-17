@@ -1,0 +1,25 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-favorite',
+  templateUrl: './favorite.page.html',
+  styleUrls: ['./favorite.page.scss'],
+})
+export class FavoritePage implements OnInit {
+  
+    
+  public client:any;
+  public driver:any;
+
+  constructor() { }
+
+  ngOnInit() {
+    if (localStorage.getItem('type')== 'client' ){
+      this.client='client';
+    }
+    else {
+      this.driver='driver';
+    }
+  }
+
+}
