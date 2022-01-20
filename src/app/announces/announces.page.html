@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="primary" class="backbtn" routerLink="/home" routerDirection="back">
+        <img src='../../assets/back-dark.svg' />
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf= "announces">
+    <h1 class="title">Announces</h1>
+    <div class="order-items" *ngFor="let announce of announces">
+      <ion-card mode="ios">
+        <ion-card-content>
+          <div class="item-img">
+            <img src='../../assets/cart/cart1.png' />
+          </div>
+  
+          <div class="item-info">
+            <p>{{announce.first_name}}</p>
+            <p>{{announce.last_name}}</p>
+            <p>{{announce.contact_phone}}</p>
+            <ion-button expand="block" (click)="displayDetail(announce.id)" class="main-button">Consult</ion-button>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

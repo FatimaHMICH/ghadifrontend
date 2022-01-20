@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {  NavController } from '@ionic/angular';
 import { DataService } from '../data.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class HomePage implements OnInit {
 
   constructor(
     private data: DataService,
+    private navCtrl: NavController,
   ) { }
 
   ngOnInit() {
@@ -29,6 +31,14 @@ export class HomePage implements OnInit {
     else {
       this.driver = 'driver';
     }
+  }
+
+  displayAnnounces(category:any){
+    localStorage.setItem('cat', category);
+    this.navCtrl.navigateRoot('/announces', {
+      animated: true,
+      animationDirection: 'forward',
+    });
   }
 
 }

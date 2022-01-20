@@ -62,6 +62,15 @@ export class AnnounceClientPage implements OnInit {
     return this.shippingForm.get('last_name');
   }
 
+  get shippingContactPhone(): AbstractControl {
+    return this.shippingForm.get('contact_phone');
+  }
+
+  get shippingImage(): AbstractControl {
+    return this.shippingForm.get('image');
+  }
+
+
   get shippingStartingAddress(): AbstractControl {
     return this.shippingForm.get('starting_address');
   }
@@ -70,22 +79,18 @@ export class AnnounceClientPage implements OnInit {
     return this.shippingForm.get('arrival_address');
   }
 
-  get shippingContactPhone(): AbstractControl {
-    return this.shippingForm.get('contact_phone');
+  get shippingLuggageType(): AbstractControl {
+    return this.shippingForm.get('luggage_type');
   }
+
+
   get shippingAddress(): AbstractControl {
     return this.shippingForm.get('address');
   }
   get shippingVehiculeType(): AbstractControl {
     return this.shippingForm.get('vehicule_type');
   }
-  get shippingLuggageType(): AbstractControl {
-    return this.shippingForm.get('luggage_type');
-  }
-
-  get shippingImage(): AbstractControl {
-    return this.shippingForm.get('image');
-  }
+  
 
 
   constructor(
@@ -97,15 +102,16 @@ export class AnnounceClientPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.setupForm();
     this.buildSlides();
-    this.vehiculeType = ['Car', 'Motorbike', 'truck'];
+    this.vehiculeType = ['Car', 'Motorbike', 'Truck'];
     this.LuggageType = ['Very lite', 'Medium', 'Heavy'];
     if (localStorage.getItem('type')== 'client' ){
       this.client='client';
+      this.setupForm1();
     }
     else {
       this.driver='driver';
+      this.setupForm2();
     }
   }
 
@@ -119,16 +125,26 @@ export class AnnounceClientPage implements OnInit {
     this.slides = slides;
   }
 
-  setupForm() {
+  setupForm1() {
     this.shippingForm = new FormGroup({
       first_name: new FormControl('', Validators.required),
       last_name: new FormControl('', Validators.required),
       starting_address: new FormControl('', Validators.required),
       arrival_address: new FormControl('', Validators.required),
+      luggage_type: new FormControl('', Validators.required),
       contact_phone: new FormControl('', Validators.required),
+      notes: new FormControl(''),
+      image: new FormControl(this.image),
+    });
+  }
+
+  setupForm2() {
+    this.shippingForm = new FormGroup({
+      first_name: new FormControl('', Validators.required),
+      last_name: new FormControl('', Validators.required),
       address: new FormControl('', Validators.required),
       vehicule_type: new FormControl('', Validators.required),
-      luggage_type: new FormControl('', Validators.required),
+      contact_phone: new FormControl('', Validators.required),
       notes: new FormControl(''),
       image: new FormControl(this.image),
     });
@@ -164,6 +180,7 @@ export class AnnounceClientPage implements OnInit {
     if (this.currentSlide === 'Shipping') {
       this.shippingFormRef.onSubmit(undefined);
 
+    if(localStorage.getItem('type')=='client'){
       if (this.shippingForm.valid) {
         //console.log(this.shippingForm.value);
         const loading = await this.loadingCtrl.create({
@@ -172,7 +189,7 @@ export class AnnounceClientPage implements OnInit {
         loading.present();
         console.log(this.shippingForm.value);
         this.announcesService
-          .addAnnounce(this.shippingForm.value)
+          .addAnnounceClients(this.shippingForm.value)
           .subscribe((announce) => {
             console.log(announce);
             loading.dismiss();
@@ -182,6 +199,26 @@ export class AnnounceClientPage implements OnInit {
           animationDirection: 'forward',
         });
       }
+    }else{
+      if (this.shippingForm.valid) {
+        //console.log(this.shippingForm.value);
+        const loading = await this.loadingCtrl.create({
+          message: 'Loading...',
+        });
+        loading.present();
+        console.log(this.shippingForm.value);
+        this.announcesService
+          .addAnnounceDrivers(this.shippingForm.value)
+          .subscribe((announce) => {
+            console.log(announce);
+            loading.dismiss();
+          });
+        this.navCtrl.navigateRoot('/home', {
+          animated: true,
+          animationDirection: 'forward',
+        });
+      }
+    }
     } else {
       this.ionSlides.slideNext();
       this.ionContent.scrollToTop();

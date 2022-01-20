@@ -28,7 +28,7 @@ export class DataService {
     if (localStorage.getItem('type') == 'client') {
     let cat1: ICategory = {
       id: 1,
-      name: 'Cars',
+      name: 'Car',
       image: '../../assets/categories/voiture2.jpg'
     }
     let cat2: ICategory = {
@@ -38,7 +38,7 @@ export class DataService {
     }
     let cat3: ICategory = {
       id: 3,
-      name: 'Truck',
+      name: 'truck',
       image: '../../assets/categories/honda2.jpg'
     }
 
@@ -46,7 +46,7 @@ export class DataService {
   } else {
     let cat1: ICategory = {
       id: 1,
-      name: 'Very lit',
+      name: 'Very lite',
       image: '../../assets/categories/category-1.png'
     }
     let cat2: ICategory = {

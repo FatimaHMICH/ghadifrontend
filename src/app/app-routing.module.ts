@@ -66,7 +66,11 @@ const routes: Routes = [
   {
     path: 'choose',
     loadChildren: () => import('./choose/choose.module').then( m => m.ChoosePageModule)
+  },  {
+    path: 'announces',
+    loadChildren: () => import('./announces/announces.module').then( m => m.AnnouncesPageModule)
   }
+
 ];
 
 @NgModule({
