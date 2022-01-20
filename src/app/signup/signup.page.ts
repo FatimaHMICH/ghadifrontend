@@ -20,4 +20,5 @@ export class SignupPage implements OnInit {
       this.driver='driver';
     }
   }
+  
 }

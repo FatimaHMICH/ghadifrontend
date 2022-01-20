@@ -28,7 +28,7 @@
         <ion-icon name="eye" slot="end"></ion-icon>
       </ion-item>
 
-      <ion-button expand="block" class="main-button">Sign Up</ion-button>
+      <ion-button (click)="form.ngSubmit.emit()" expand="block" class="main-button" >Sign Up</ion-button>
 
       <div class="sign-up">
         Already have an account? <ion-button color="dark" fill="clear" routerLink="/login" routerDirection="forward">Sign in</ion-button>

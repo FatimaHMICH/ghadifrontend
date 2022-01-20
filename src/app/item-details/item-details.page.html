@@ -19,25 +19,21 @@
 </ion-header>
 
 <ion-content>
+  <div *ngIf= "client">
   <ion-slides pager="true" class="product-slider">
     <ion-slide>
-      <img src="../../assets/product-slider/prod-slide1.png" />
+      <img src="../../assets/photos/voiture3.jpg" />
     </ion-slide>
     <ion-slide>
-      <img src="../../assets/product-slider/prod-slide1.png" />
+      <img src="../../assets/photos/voiture3.jpg" />
     </ion-slide>
     <ion-slide>
-      <img src="../../assets/product-slider/prod-slide1.png" />
+      <img src="../../assets/photos/voiture3.jpg" />
     </ion-slide>
   </ion-slides>
 
   <div class="ion-padding-vertical">
-    <h1 class="item-name">Black turtleneck top</h1>
-
-    <h4 class="price">
-      $42
-      <span class="real-price">$62</span>
-    </h4>
+    <h1 class="item-name">GHadi mn casa l ouarzazate</h1>
   </div>
 
   <div class="seperator">
@@ -119,14 +115,107 @@
       </div>
     </div>
   </div>
+  </div>
+  <div *ngIf= "driver">
+    <ion-slides pager="true" class="product-slider">
+      <ion-slide>
+        <img src="../../assets/photos/sac1.png" />
+      </ion-slide>
+      <ion-slide>
+        <img src="../../assets/photos/sac1.png" />
+      </ion-slide>
+      <ion-slide>
+        <img src="../../assets/photos/sac1.png" />
+      </ion-slide>
+    </ion-slides>
+  
+    <div class="ion-padding-vertical">
+      <h1 class="item-name">Mn casa l ouarzazate</h1>
+  
+       <!-- <h4 class="price">
+        $20
+        <span class="real-price">$50</span>
+      </h4>  -->
+    </div>
+  
+    <div class="seperator">
+      <hr>
+    </div>
+  
+    <div class="review">
+      <ion-row>
+        <ion-col size="6">
+          <!-- <div class="rating">
+            4.5
+          </div> -->
+  
+          Urgent
+        </ion-col>
+        <ion-col size="6">
+          <div class="count">9 Reviews</div>
+        </ion-col>
+      </ion-row>
+    </div>
+  
+    <div class="seperator">
+      <hr>
+    </div>
+  
+    <div class="description">
+      <h5>Description</h5>
+  
+      <p>
+        A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine.
+      </p>
+  
+    </div>
+  
+    <div class="seperator">
+      <hr>
+    </div>
+  
+    <div class="variation">
+      <ion-segment (ionChange)="segmentChanged($event)" value="size">
+        <ion-segment-button value="size">
+          <ion-label>Select Bagage</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="color">
+          <ion-label>Select Client</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+  
+    <div class="seperator">
+      <hr>
+    </div>
+  
+    <div class="variation-selector">
+      <div class="sizes" [class.active-variation]="activeVariation == 'size'">
+        <div [class.active]="selectedSize == 1" (click)="changeSize(1)">
+          S
+        </div>
+        <div [class.active]="selectedSize == 2" (click)="changeSize(2)">
+          M
+        </div>
+        <div [class.active]="selectedSize == 3" (click)="changeSize(3)">
+          L
+        </div>
+        <div [class.active]="selectedSize == 4" (click)="changeSize(4)">
+          XL
+        </div>
+      </div>
+  
+      <div class="colors" [class.active-variation]="activeVariation == 'color'">
+        <div [class.active]="selectedColor == 1" (click)="changeColor(1)">
+          BLACK
+        </div>
+        <div [class.active]="selectedColor == 2" (click)="changeColor(2)">
+          GREEN
+        </div>
+        <div [class.active]="selectedColor == 3" (click)="changeColor(3)">
+          BLUE
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>
-<ion-footer>
-  <ion-row>
-    <ion-col size="6">
-      <ion-button expand="full" color="light">Add to cart</ion-button>
-    </ion-col>
-    <ion-col size="6">
-      <ion-button expand="full">Buy now</ion-button>
-    </ion-col>
-  </ion-row>
-</ion-footer>

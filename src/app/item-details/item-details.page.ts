@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Animation, AnimationController } from '@ionic/angular';
+import { AnnounceDetailService } from '../service/announce-detail.service';
 
 @Component({
   selector: 'app-item-details',
@@ -11,12 +12,43 @@ export class ItemDetailsPage implements OnInit {
   selectedColor: number;
   activeVariation: string;
 
+    
+  public client:any;
+  public driver:any;
+  public announceDetail = [];
+  public id: any;
+
   constructor(
     private animatioCntrl: AnimationController,
+    private announceDetailService: AnnounceDetailService
   ) { }
+
+  
 
   ngOnInit() {
     this.activeVariation = 'size';
+    this.id = localStorage.getItem('id');
+
+    if (localStorage.getItem('type') == 'client') {
+      this.announceDetailService.getAnnounceDetailDriver(this.id).subscribe(
+        (response) => {
+          this.announceDetail = response;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }   
+    else {
+      this.announceDetailService.getAnnounceDetailClient(this.id).subscribe(
+        (response) => {
+          this.announceDetail = response;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
   }
 
   segmentChanged(e: any) {
@@ -64,5 +96,7 @@ export class ItemDetailsPage implements OnInit {
   changeColor(color: number) {
     this.selectedColor = color;
   }
+
+  
 
 }
