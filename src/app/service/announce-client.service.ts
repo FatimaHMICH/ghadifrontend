@@ -7,13 +7,20 @@ import { AnnounceClient } from '../announce-client/announceClient.model';
   providedIn: 'root',
 })
 export class AnnounceClientService {
-  apiUrl = 'http://localhost:8000/api';
+  apiUrl = 'https://ghadiapp.herokuapp.com/api';
 
   constructor(private http: HttpClient) {}
 
-  addAnnounce(announceClient: AnnounceClient): Observable<AnnounceClient> {
+  addAnnounceClients(announceClient: AnnounceClient): Observable<AnnounceClient> {
     return this.http.post<AnnounceClient>(
       `${this.apiUrl}/announcesClients`,
+      announceClient
+    );
+  }
+
+  addAnnounceDrivers(announceClient: AnnounceClient): Observable<AnnounceClient> {
+    return this.http.post<AnnounceClient>(
+      `${this.apiUrl}/announcesDrivers`,
       announceClient
     );
   }
