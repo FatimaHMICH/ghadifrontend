@@ -38,7 +38,7 @@ export class DataService {
     }
     let cat3: ICategory = {
       id: 3,
-      name: 'truck',
+      name: 'Truck',
       image: '../../assets/categories/honda2.jpg'
     }
 
@@ -95,19 +95,19 @@ export class DataService {
       id: 1,
       name: 'Carton',
       price: 55,
-      image: '../../assets/products/prod-1.png'
+      image: '../../assets/photos/carton.jpg'
     }
     let prod2: IProduct = {
       id: 2,
       name: 'Valise',
       price: 34,
-      image: '../../assets/products/prod-2.png'
+      image: '../../assets/photos/valise1.jpg'
     }
     let prod3: IProduct = {
       id: 1,
       name: 'Sac',
       price: 40,
-      image: '../../assets/products/prod-3.png'
+      image: '../../assets/photos/sac1.png'
     }
 
     products.push(prod1, prod2, prod3);
@@ -124,19 +124,19 @@ export class DataService {
       id: 1,
       name: 'Zayneb',
       price: 55,
-      image: '../../assets/products/prod-4.png'
+      image: '../../assets/products/prod-3.png'
     }
     let prod2: IProduct = {
       id: 2,
       name: 'Anass',
       price: 34,
-      image: '../../assets/products/prod-5.png'
+      image: '../../assets/products/prod-2.png'
     }
     let prod3: IProduct = {
       id: 1,
       name: 'Fatyma',
       price: 40,
-      image: '../../assets/products/prod-6.png'
+      image: '../../assets/products/prod-1.png'
     }
 
     products.push(prod1, prod2, prod3);

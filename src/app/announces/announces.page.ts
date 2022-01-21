@@ -43,7 +43,7 @@ export class AnnouncesPage implements OnInit {
    
   displayDetail(id:any){
     localStorage.setItem('id', id);
-    this.navCtrl.navigateRoot('/announceDetail', {
+    this.navCtrl.navigateRoot('/item-details', {
       animated: true,
       animationDirection: 'forward',
     });

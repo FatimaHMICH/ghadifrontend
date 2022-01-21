@@ -30,6 +30,7 @@ export class ItemDetailsPage implements OnInit {
     this.id = localStorage.getItem('id');
 
     if (localStorage.getItem('type') == 'client') {
+      this.client = 'client';
       this.announceDetailService.getAnnounceDetailDriver(this.id).subscribe(
         (response) => {
           this.announceDetail = response;
@@ -38,8 +39,9 @@ export class ItemDetailsPage implements OnInit {
           console.log(error);
         }
       );
-    }   
+    }  
     else {
+      this.driver = 'driver';
       this.announceDetailService.getAnnounceDetailClient(this.id).subscribe(
         (response) => {
           this.announceDetail = response;
@@ -49,6 +51,7 @@ export class ItemDetailsPage implements OnInit {
         }
       );
     }
+
   }
 
   segmentChanged(e: any) {

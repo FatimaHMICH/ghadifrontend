@@ -9,59 +9,136 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <div *ngIf= "client">
   <div class="ion-padding container">
     <h1>Signup</h1>
 
     <div class="form-container">
-      <ion-item>
-        <ion-label position="floating">Name</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Email</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Password</ion-label>
-        <ion-input type="password"></ion-input>
-        <ion-icon name="eye" slot="end"></ion-icon>
-      </ion-item>
+      <form
+      [formGroup]="shippingForm"
+      #shippingFormRef="ngForm"
+      novalidate
+    >
 
-      <ion-button (click)="form.ngSubmit.emit()" expand="block" class="main-button" >Sign Up</ion-button>
+      <ion-item>
+        <ion-label position="floating"> UserName</ion-label>
+        <ion-input
+            type="text"
+            formControlName="userName"
+          ></ion-input>
+      </ion-item>
+        <ion-text color="danger">
+          <span
+            class="text-tiny"
+            [style.visibility]="shippingUserName?.errors?.required && shippingFormRef.submitted ? '' : 'hidden'"
+          >
+            Field required
+          </span>
+        </ion-text>
+
+      <ion-item>
+        <ion-label position="floating">CIN</ion-label>
+        <ion-input
+            type="text"
+            formControlName="cin"
+          ></ion-input>
+      </ion-item>
+        <ion-text color="danger">
+          <span
+            class="text-tiny"
+            [style.visibility]="shippingCin?.errors?.required && shippingFormRef.submitted ? '' : 'hidden'"
+          >
+            Field required
+          </span>
+        </ion-text>
+
+        <ion-item>
+          <ion-label position="floating">Address</ion-label>
+          <ion-input
+              type="text"
+              formControlName="address"
+            ></ion-input>
+        </ion-item>
+          <ion-text color="danger">
+            <span
+              class="text-tiny"
+              [style.visibility]="shippingAddress?.errors?.required && shippingFormRef.submitted ? '' : 'hidden'"
+            >
+              Field required
+            </span>
+          </ion-text>
+
+          <ion-item>
+            <ion-label position="floating">City</ion-label>
+            <ion-input
+                type="text"
+                formControlName="city"
+              ></ion-input>
+          </ion-item>
+            <ion-text color="danger">
+              <span
+                class="text-tiny"
+                [style.visibility]="shippingCity?.errors?.required && shippingFormRef.submitted ? '' : 'hidden'"
+              >
+                Field required
+              </span>
+            </ion-text>
+
+            <ion-item>
+              <ion-label position="floating">Postal Code</ion-label>
+              <ion-input
+                  type="text"
+                  formControlName="postalCode"
+                ></ion-input>
+            </ion-item>
+              <ion-text color="danger">
+                <span
+                  class="text-tiny"
+                  [style.visibility]="shippingPostalCode?.errors?.required && shippingFormRef.submitted ? '' : 'hidden'"
+                >
+                  Field required
+                </span>
+              </ion-text>
+
+            <ion-item>
+              <ion-label position="floating">Email</ion-label>
+              <ion-input
+                  type="text"
+                  formControlName="email"
+                ></ion-input>
+            </ion-item>
+              <ion-text color="danger">
+                <span
+                  class="text-tiny"
+                  [style.visibility]="shippingEmail?.errors?.required && shippingFormRef.submitted ? '' : 'hidden'"
+                >
+                  Field required
+                </span>
+              </ion-text>
+
+            <ion-item>
+              <ion-label position="floating">Password</ion-label>
+              <ion-input
+                  type="password"
+                  formControlName="password"
+                ></ion-input>
+            </ion-item>
+              <ion-text color="danger">
+                <span
+                  class="text-tiny"
+                  [style.visibility]="shippingPassword?.errors?.required && shippingFormRef.submitted ? '' : 'hidden'"
+                >
+                  Field required
+                </span>
+              </ion-text>
+              <ion-icon name="eye" slot="end"></ion-icon>
+
+      <ion-button (click)="signUp()" expand="block" class="main-button" >Sign Up</ion-button>
 
       <div class="sign-up">
         Already have an account? <ion-button color="dark" fill="clear" routerLink="/login" routerDirection="forward">Sign in</ion-button>
       </div>
+    </form>
     </div>
   </div>
- </div>
-
- <div *ngIf= "driver">
-  <div class="ion-padding container">
-    <h1>Signup Driver</h1>
-
-    <div class="form-container">
-      <ion-item>
-        <ion-label position="floating">Name</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Email</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Password</ion-label>
-        <ion-input type="password"></ion-input>
-        <ion-icon name="eye" slot="end"></ion-icon>
-      </ion-item>
-
-      <ion-button expand="block" class="main-button">Sign Up</ion-button>
-
-      <div class="sign-up">
-        Already have an account? <ion-button color="dark" fill="clear" routerLink="/login" routerDirection="forward">Sign in</ion-button>
-      </div>
-    </div>
-  </div>
- </div>
+ 
 </ion-content>

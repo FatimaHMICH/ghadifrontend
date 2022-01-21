@@ -1,11 +1,10 @@
 
 export interface Profile {
-    name: string ;
     username : string;
-    addresse: string;
-    photo :string;
+    address: string;
+    cin :string;
     city :string;
     password :string;
-    phoneNumber :string;
+    codePostal :string;
     email :string;
 }

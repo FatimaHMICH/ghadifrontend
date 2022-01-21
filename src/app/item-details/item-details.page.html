@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button color="primary" class="backbtn" routerLink="/home" routerDirection="back">
+      <ion-button color="primary" class="backbtn" routerLink="/announces" routerDirection="back">
         <img src="../../assets/back-dark.svg" />
       </ion-button>
     </ion-buttons>
@@ -20,20 +20,12 @@
 
 <ion-content>
   <div *ngIf= "client">
-  <ion-slides pager="true" class="product-slider">
-    <ion-slide>
-      <img src="../../assets/photos/voiture3.jpg" />
-    </ion-slide>
-    <ion-slide>
-      <img src="../../assets/photos/voiture3.jpg" />
-    </ion-slide>
-    <ion-slide>
-      <img src="../../assets/photos/voiture3.jpg" />
-    </ion-slide>
-  </ion-slides>
+    <div class="item-img" *ngIf="announceDetail">
+      <img [src]="announceDetail.image" alt="Image"/>
+    </div>
 
   <div class="ion-padding-vertical">
-    <h1 class="item-name">GHadi mn casa l ouarzazate</h1>
+    <h1 class="item-name">{{announceDetail.first_name }} {{ announceDetail.last_name }} </h1>
   </div>
 
   <div class="seperator">
@@ -46,7 +38,6 @@
         <div class="rating">
           4.5
         </div>
-
         Very Good
       </ion-col>
       <ion-col size="6">
@@ -60,11 +51,9 @@
   </div>
 
   <div class="description">
-    <h5>Description</h5>
+    <h5>Contact Phone</h5>
 
-    <p>
-      A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine.
-    </p>
+      {{announceDetail.contact_phone}}
 
   </div>
 
@@ -72,7 +61,29 @@
     <hr>
   </div>
 
-  <div class="variation">
+  <div class="description">
+    <h5>address</h5>
+
+      {{announceDetail.address}}
+
+  </div>
+
+  <div class="seperator">
+    <hr>
+  </div>
+
+  <div *ngIf="announceDetail.notes" class="description">
+    <h5>Description</h5>
+
+      {{announceDetail.notes}}
+
+  </div>
+
+  <div *ngIf="announceDetail.notes" class="seperator">
+    <hr>
+  </div>
+
+  <!-- <div class="variation">
     <ion-segment (ionChange)="segmentChanged($event)" value="size">
       <ion-segment-button value="size">
         <ion-label>Select Size</ion-label>
@@ -81,13 +92,13 @@
         <ion-label>Select Color</ion-label>
       </ion-segment-button>
     </ion-segment>
-  </div>
+  </div> -->
 
-  <div class="seperator">
+  <!-- <div class="seperator">
     <hr>
-  </div>
+  </div> -->
 
-  <div class="variation-selector">
+  <!-- <div class="variation-selector">
     <div class="sizes" [class.active-variation]="activeVariation == 'size'">
       <div [class.active]="selectedSize == 1" (click)="changeSize(1)">
         S
@@ -114,24 +125,15 @@
         BLUE
       </div>
     </div>
-  </div>
+  </div> -->
   </div>
   <div *ngIf= "driver">
-    <ion-slides pager="true" class="product-slider">
-      <ion-slide>
-        <img src="../../assets/photos/sac1.png" />
-      </ion-slide>
-      <ion-slide>
-        <img src="../../assets/photos/sac1.png" />
-      </ion-slide>
-      <ion-slide>
-        <img src="../../assets/photos/sac1.png" />
-      </ion-slide>
-    </ion-slides>
+    <div class="item-img" *ngIf="announceDetail">
+      <img [src]="announceDetail.image" alt="Image"/>
+    </div>
   
     <div class="ion-padding-vertical">
-      <h1 class="item-name">Mn casa l ouarzazate</h1>
-  
+      <h1 class="item-name">{{announceDetail.first_name}} {{announceDetail.last_name}}</h1>
        <!-- <h4 class="price">
         $20
         <span class="real-price">$50</span>
@@ -141,15 +143,13 @@
     <div class="seperator">
       <hr>
     </div>
-  
+
     <div class="review">
       <ion-row>
         <ion-col size="6">
-          <!-- <div class="rating">
-            4.5
-          </div> -->
-  
-          Urgent
+          <div class="rating">
+            Urgent
+          </div>
         </ion-col>
         <ion-col size="6">
           <div class="count">9 Reviews</div>
@@ -162,15 +162,50 @@
     </div>
   
     <div class="description">
-      <h5>Description</h5>
-  
+      <h5>Contact Phone</h5>
       <p>
-        A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine.
+        {{announceDetail.contact_phone}}
       </p>
-  
+    </div>
+
+    <div class="seperator">
+      <hr>
     </div>
   
+    <div class="description">
+      <h5>Starting Address</h5>
+      <p>
+        {{announceDetail.starting_address}}
+      </p>
+    </div>
+
     <div class="seperator">
+      <hr>
+    </div>
+  
+    <div class="description">
+      <h5>arrival_address</h5>
+      <p>
+        {{announceDetail.arrival_address}}
+      </p>
+    </div>
+
+    <div class="seperator">
+      <hr>
+    </div>
+  
+    <div *ngIf="announceDetail.notes" class="description">
+      <h5>Description</h5>
+      <p>
+        {{announceDetail.notes}}
+      </p>
+    </div>
+
+    <div *ngIf="announceDetail.notes" class="seperator">
+      <hr>
+    </div>
+  
+    <!-- <div class="seperator">
       <hr>
     </div>
   
@@ -216,6 +251,6 @@
           BLUE
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </ion-content>

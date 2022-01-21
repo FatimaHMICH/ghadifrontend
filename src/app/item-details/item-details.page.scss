@@ -165,3 +165,15 @@ ion-footer {
 .footer-md::before {
     background-image: none !important;
 }
+.item-img {
+    display: flex;
+    align-items: center;
+    margin-right: 16px;
+
+    img {
+        object-fit: cover;
+        width: auto;
+        height: 250px;
+        box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.16);
+    }
+}

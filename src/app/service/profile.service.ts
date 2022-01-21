@@ -8,14 +8,17 @@ import { Profile } from '../profile/profil.model';
 
 })
 export class ProfileService {
-    apiUrl = 'http://localhost:8000/api';
+    apiUrl = 'https://ghadiapp.herokuapp.com/api';
 
-    constructor(private http: HttpClient,
-        ){}
+    constructor(private http: HttpClient){}
   
 
-    getProfile(): Observable<Profile[]>{
-        return this.http.get<Profile[]>(`${this.apiUrl}/profiles`);
+    getClientProfile(id:any): Observable<Profile[]>{
+        return this.http.get<Profile[]>(`${this.apiUrl}/client/${id}`);
+    }
+
+    getDriverProfile(id:any): Observable<Profile[]>{
+        return this.http.get<Profile[]>(`${this.apiUrl}/driver/${id}`);
     }
 
 }

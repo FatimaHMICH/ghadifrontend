@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController, LoadingController } from '@ionic/angular';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { LoadingController, NavController } from '@ionic/angular';
 import { ProfileService } from '../service/profile.service';
-import { Profile } from './profil.model';
 
 @Component({
   selector: 'app-profile',
@@ -11,23 +8,49 @@ import { Profile } from './profil.model';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-  profiles$: Observable<Profile[]>;
+  profile: any;
+  id:any;
 
   constructor(
     private profileService: ProfileService, 
-    private loadingCtrl: LoadingController,
+    private navCtrl: NavController, 
  
     ) { }
 
-  async ngOnInit() {
-   const loading = await  this.loadingCtrl.create({message: 'Loading ...'});
-   loading.present();
-   this.profiles$ = this.profileService.getProfile().pipe(
-    tap(annonces =>{
-      loading.dismiss();
-      return annonces;
-    })
-   )
-   console.log(this.profiles$);
+  ngOnInit() {
+
+    this.id=localStorage.getItem("idUser");
+    
+  if(localStorage.getItem('type')=="client"){
+      this.profile = this.profileService.getClientProfile(this.id).subscribe(
+        (response) => {
+          this.profile = response;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    console.log(this.profile);
+
+  }else{
+      this.profile = this.profileService.getDriverProfile(this.id).subscribe(
+        (response) => {
+          this.profile = response;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    console.log(this.profile);
+  }
+
+  }
+
+  disconnect(){
+    localStorage.clear();
+    this.navCtrl.navigateRoot('/choose', {
+      animated: true,
+      animationDirection: 'forward',
+    });
   }
 }
