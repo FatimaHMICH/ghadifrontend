@@ -6,6 +6,7 @@ import { AnnounceClient, AnnounceDriver } from '../announce-client/announceClien
 @Injectable({
   providedIn: 'root'
 })
+
 export class HomeService {
 
   apiUrl = 'https://ghadiapp.herokuapp.com/api'
