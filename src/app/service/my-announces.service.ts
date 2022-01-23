@@ -8,7 +8,7 @@ import { AnnounceClient, AnnounceDriver } from '../announce-client/announceClien
 })
 export class MyAnnouncesService {
 
-  apiUrl = ' http://127.0.0.1:8000/api';
+  apiUrl = ' https://ghadiapp.herokuapp.com/api';
 
   constructor(private http: HttpClient) { }
 
