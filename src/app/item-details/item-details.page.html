@@ -1,26 +1,13 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button color="primary" class="backbtn" routerLink="/announces" routerDirection="back">
-        <img src="../../assets/back-dark.svg" />
-      </ion-button>
-    </ion-buttons>
-
-    <ion-buttons slot="end">
-      <ion-button>
-        <ion-icon name="search-outline" color="dark"></ion-icon>
-      </ion-button>
-      <ion-button class="notification">
-        <ion-icon name="notifications-outline" color="dark"></ion-icon>
-        <span>&nbsp;</span>
-      </ion-button>
-    </ion-buttons>
+  <ion-toolbar color="dark">
+    <ion-title>Details</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div *ngIf= "client">
-    <div class="item-img" *ngIf="announceDetail">
+  <div *ngIf= "announceDetail">
+    <div class="item-img">
       <img [src]="announceDetail.image" alt="Image"/>
     </div>
 
@@ -82,62 +69,16 @@
   <div *ngIf="announceDetail.notes" class="seperator">
     <hr>
   </div>
-
-  <!-- <div class="variation">
-    <ion-segment (ionChange)="segmentChanged($event)" value="size">
-      <ion-segment-button value="size">
-        <ion-label>Select Size</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="color">
-        <ion-label>Select Color</ion-label>
-      </ion-segment-button>
-    </ion-segment>
-  </div> -->
-
-  <!-- <div class="seperator">
-    <hr>
-  </div> -->
-
-  <!-- <div class="variation-selector">
-    <div class="sizes" [class.active-variation]="activeVariation == 'size'">
-      <div [class.active]="selectedSize == 1" (click)="changeSize(1)">
-        S
-      </div>
-      <div [class.active]="selectedSize == 2" (click)="changeSize(2)">
-        M
-      </div>
-      <div [class.active]="selectedSize == 3" (click)="changeSize(3)">
-        L
-      </div>
-      <div [class.active]="selectedSize == 4" (click)="changeSize(4)">
-        XL
-      </div>
-    </div>
-
-    <div class="colors" [class.active-variation]="activeVariation == 'color'">
-      <div [class.active]="selectedColor == 1" (click)="changeColor(1)">
-        BLACK
-      </div>
-      <div [class.active]="selectedColor == 2" (click)="changeColor(2)">
-        GREEN
-      </div>
-      <div [class.active]="selectedColor == 3" (click)="changeColor(3)">
-        BLUE
-      </div>
-    </div>
-  </div> -->
   </div>
-  <div *ngIf= "driver">
-    <div class="item-img" *ngIf="announceDetail">
+</div>
+  <div *ngIf= "driver" >
+  <div *ngIf= "announceDetail">
+    <div class="item-img">
       <img [src]="announceDetail.image" alt="Image"/>
     </div>
   
     <div class="ion-padding-vertical">
       <h1 class="item-name">{{announceDetail.first_name}} {{announceDetail.last_name}}</h1>
-       <!-- <h4 class="price">
-        $20
-        <span class="real-price">$50</span>
-      </h4>  -->
     </div>
   
     <div class="seperator">
@@ -204,53 +145,24 @@
     <div *ngIf="announceDetail.notes" class="seperator">
       <hr>
     </div>
-  
-    <!-- <div class="seperator">
-      <hr>
-    </div>
-  
-    <div class="variation">
-      <ion-segment (ionChange)="segmentChanged($event)" value="size">
-        <ion-segment-button value="size">
-          <ion-label>Select Bagage</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="color">
-          <ion-label>Select Client</ion-label>
-        </ion-segment-button>
-      </ion-segment>
-    </div>
-  
-    <div class="seperator">
-      <hr>
-    </div>
-  
-    <div class="variation-selector">
-      <div class="sizes" [class.active-variation]="activeVariation == 'size'">
-        <div [class.active]="selectedSize == 1" (click)="changeSize(1)">
-          S
-        </div>
-        <div [class.active]="selectedSize == 2" (click)="changeSize(2)">
-          M
-        </div>
-        <div [class.active]="selectedSize == 3" (click)="changeSize(3)">
-          L
-        </div>
-        <div [class.active]="selectedSize == 4" (click)="changeSize(4)">
-          XL
-        </div>
-      </div>
-  
-      <div class="colors" [class.active-variation]="activeVariation == 'color'">
-        <div [class.active]="selectedColor == 1" (click)="changeColor(1)">
-          BLACK
-        </div>
-        <div [class.active]="selectedColor == 2" (click)="changeColor(2)">
-          GREEN
-        </div>
-        <div [class.active]="selectedColor == 3" (click)="changeColor(3)">
-          BLUE
-        </div>
-      </div>
-    </div> -->
   </div>
+</div>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div
+      class="full-width flex align-items-center justify-content-space-between ion-padding-horizontal"
+    >
+      <ion-button
+        style="width: 120px"
+        strong
+        class="back-button"
+        [routerLink]="['/announces']"
+      >
+        <span>Back</span>
+        <ion-icon slot="start" name="chevron-back"></ion-icon>
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

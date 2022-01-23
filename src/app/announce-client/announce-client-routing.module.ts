@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ConfirmPage } from '../confirm/confirm.page';
 import { HomePage } from '../home/home.page';
 
 import { AnnounceClientPage } from './announce-client.page';
@@ -10,8 +11,8 @@ const routes: Routes = [
     component: AnnounceClientPage,
   },
   {
-    path: '/home',
-    component: HomePage,
+    path: '/confirm',
+    component: ConfirmPage,
   },
 ];
 

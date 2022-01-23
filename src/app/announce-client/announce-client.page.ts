@@ -87,8 +87,13 @@ export class AnnounceClientPage implements OnInit {
   get shippingAddress(): AbstractControl {
     return this.shippingForm.get('address');
   }
+
   get shippingVehiculeType(): AbstractControl {
     return this.shippingForm.get('vehicule_type');
+  }
+
+  get shippingIdUser(): AbstractControl {
+    return this.shippingForm.get('id_user');
   }
   
 
@@ -134,6 +139,7 @@ export class AnnounceClientPage implements OnInit {
       luggage_type: new FormControl('', Validators.required),
       contact_phone: new FormControl('', Validators.required),
       notes: new FormControl(''),
+      id_user: new FormControl(localStorage.getItem('idUser'), Validators.required),
       image: new FormControl(this.image),
     });
   }
@@ -146,6 +152,7 @@ export class AnnounceClientPage implements OnInit {
       vehicule_type: new FormControl('', Validators.required),
       contact_phone: new FormControl('', Validators.required),
       notes: new FormControl(''),
+      id_user: new FormControl(localStorage.getItem('idUser'), Validators.required),
       image: new FormControl(this.image),
     });
   }
@@ -194,7 +201,7 @@ export class AnnounceClientPage implements OnInit {
             console.log(announce);
             loading.dismiss();
           });
-        this.navCtrl.navigateRoot('/home', {
+        this.navCtrl.navigateRoot('/confirm', {
           animated: true,
           animationDirection: 'forward',
         });
@@ -213,7 +220,7 @@ export class AnnounceClientPage implements OnInit {
             console.log(announce);
             loading.dismiss();
           });
-        this.navCtrl.navigateRoot('/home', {
+        this.navCtrl.navigateRoot('/confirm', {
           animated: true,
           animationDirection: 'forward',
         });

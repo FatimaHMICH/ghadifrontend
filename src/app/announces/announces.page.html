@@ -1,16 +1,11 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button color="primary" class="backbtn" routerLink="/home" routerDirection="back">
-        <img src='../../assets/back-dark.svg' />
-      </ion-button>
-    </ion-buttons>
+  <ion-toolbar color="dark">
+    <ion-title>Announces</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div *ngIf= "announces">
-    <h1 class="title">Announces</h1>
     <div class="order-items" *ngFor="let announce of announces">
       <ion-card mode="ios">
         <ion-card-content>
@@ -29,3 +24,21 @@
     </div>
   </div>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div
+      class="full-width flex align-items-center justify-content-space-between ion-padding-horizontal"
+    >
+      <ion-button
+        style="width: 120px"
+        strong
+        class="back-button"
+        [routerLink]="['/home']"
+      >
+        <span>Back</span>
+        <ion-icon slot="start" name="chevron-back"></ion-icon>
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

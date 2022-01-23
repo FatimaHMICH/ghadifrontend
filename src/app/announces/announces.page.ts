@@ -22,7 +22,6 @@ export class AnnouncesPage implements OnInit {
       this.announcesService.getAnnouncesDriver(this.cat).subscribe(
         (response) => {
           this.announces = response;
-          console.log(this.announces);
         },
         (error) => {
           console.log(error);

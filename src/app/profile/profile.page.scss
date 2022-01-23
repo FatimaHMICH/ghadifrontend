@@ -18,6 +18,10 @@ ion-content {
     color: #434343;
 }
 
+.souligne{
+    text-decoration: underline;
+}
+
 .profile-info {
     padding-top: 20px;
 
@@ -114,4 +118,26 @@ ion-item {
     object-fit: cover;
     display: block;
   }
+
+.main-button::after {
+    box-shadow: none !important;
+}
+
+.back-button {
+  --border-radius: 5px;
+}
+
+.back-button::after {
+  box-shadow: none !important;
+}
+
+.publish-button {
+  float: right;
+  width: 120px;
+  --border-radius: 5px;
+}
+
+.publish-button::after {
+  box-shadow: none !important;
+}
   

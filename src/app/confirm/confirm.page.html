@@ -1,29 +1,30 @@
 <ion-header>
-  <ion-toolbar>
-    
+  <ion-toolbar color="dark">
+    <ion-title>Thank you</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <div class="confirmation">
-    <div class="ion-text-center">
+<ion-content>
+  <div class="flex-center">
+    <ion-icon name="checkmark-circle" color="success"></ion-icon>
+    <div class="ion-padding">
+      <ion-text color="dark">
+        <h2 class="bold">Your announce has been published</h2>
+      </ion-text>
+    </div>
 
-      <div class="outer-circle">
-        <div class="inner-circle">
-          <img src="../../assets/like.png" />
-        </div>
+    <div style="width: 300px; margin: 0 auto">
+      <div class="ion-margin-vertical">
+        <ion-button
+          size="large"
+          shape="round"
+          color="dark"
+          expand="block"
+          [routerLink]="['/home']"
+        >
+          Go home
+        </ion-button>
       </div>
-
-      <h2>Confirmation</h2>
-      <p>
-        You have successfully <br>
-        completed your order done
-      </p>
     </div>
   </div>
 </ion-content>
-<ion-footer translucent="true" class="ion-no-border" mode="md">
-  <ion-toolbar color="translucent">
-    <ion-button expand="block" class="main-button" routerLink="/home" routerDirection="back">Back to Home</ion-button>
-  </ion-toolbar>
-</ion-footer>

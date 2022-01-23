@@ -68,3 +68,11 @@ ion-content {
         }
     }
 }
+
+.back-button {
+    --border-radius: 5px;
+  }
+  
+.back-button::after {
+box-shadow: none !important;
+}

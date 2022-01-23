@@ -1,179 +1,44 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button color="primary" class="backbtn" routerLink="/home" routerDirection="back">
-        <img src='../../assets/back-dark.svg' />
-      </ion-button>
-    </ion-buttons>
-
-    <ion-buttons slot="end">
-      <ion-button class="notification">
-        <ion-icon name="notifications-outline" color="dark"></ion-icon>
-      </ion-button>
-    </ion-buttons>
+  <ion-toolbar color="dark">
+    <ion-title>My announcements</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div *ngIf= "client">
-  <h1 class="title">My Orders</h1>
-  <div class="order-items">
-    <ion-card mode="ios">
-      <ion-card-content>
-        <div class="item-img">
-          <img src='../../assets/cart/cart1.png' />
-        </div>
-
-        <div class="item-info">
-          <p>Women t-shirt</p>
-          <p>Lotto.LTD</p>
-          <p>$34.00</p>
-
-          <ion-button expand="block" class="main-button">Order Again</ion-button>
-        </div>
-      </ion-card-content>
-    </ion-card>
-    <ion-card mode="ios">
-      <ion-card-content>
-        <div class="item-img">
-          <img src='../../assets/cart/cart2.png' />
-        </div>
-
-        <div class="item-info">
-          <p>Female t-shirt</p>
-          <p>Bata</p>
-          <p>$44.00</p>
-
-          <ion-button expand="block" class="main-button">Order Again</ion-button>
-        </div>
-      </ion-card-content>
-    </ion-card>
-    <ion-card mode="ios">
-      <ion-card-content>
-        <div class="item-img">
-          <img src='../../assets/cart/cart3.png' />
-        </div>
-
-        <div class="item-info">
-          <p>Shirt</p>
-          <p>Next</p>
-          <p>$30.00</p>
-
-          <ion-button expand="block" class="main-button">Order Again</ion-button>
-        </div>
-      </ion-card-content>
-    </ion-card>
-    <ion-card mode="ios">
-      <ion-card-content>
-        <div class="item-img">
-          <img src='../../assets/cart/cart4.png' />
-        </div>
-
-        <div class="item-info">
-          <p>Women shirt</p>
-          <p>Plus Point</p>
-          <p>$54.00</p>
-
-          <ion-button expand="block" class="main-button">Order Again</ion-button>
-        </div>
-      </ion-card-content>
-    </ion-card>
-    <ion-card mode="ios">
-      <ion-card-content>
-        <div class="item-img">
-          <img src='../../assets/cart/cart5.png' />
-        </div>
-
-        <div class="item-info">
-          <p>Shirt</p>
-          <p>Cat's Eye</p>
-          <p>$50.00</p>
-
-          <ion-button expand="block" class="main-button">Order Again</ion-button>
-        </div>
-      </ion-card-content>
-    </ion-card>
-  </div>
-  </div>
-
-  <div *ngIf= "driver">
-    <h1 class="title">My Orders Driver</h1>
-    <div class="order-items">
+  <div *ngIf= "myAnnounces">
+    <div class="order-items" *ngFor="let myAnnounce of myAnnounces">
       <ion-card mode="ios">
         <ion-card-content>
           <div class="item-img">
-            <img src='../../assets/cart/cart1.png' />
+            <img [src]="myAnnounce.image" alt="Image"/>
           </div>
   
           <div class="item-info">
-            <p>Women t-shirt</p>
-            <p>Lotto.LTD</p>
-            <p>$34.00</p>
-  
-            <ion-button expand="block" class="main-button">Order Again</ion-button>
-          </div>
-        </ion-card-content>
-      </ion-card>
-      <ion-card mode="ios">
-        <ion-card-content>
-          <div class="item-img">
-            <img src='../../assets/cart/cart2.png' />
-          </div>
-  
-          <div class="item-info">
-            <p>Female t-shirt</p>
-            <p>Bata</p>
-            <p>$44.00</p>
-  
-            <ion-button expand="block" class="main-button">Order Again</ion-button>
-          </div>
-        </ion-card-content>
-      </ion-card>
-      <ion-card mode="ios">
-        <ion-card-content>
-          <div class="item-img">
-            <img src='../../assets/cart/cart3.png' />
-          </div>
-  
-          <div class="item-info">
-            <p>Shirt</p>
-            <p>Next</p>
-            <p>$30.00</p>
-  
-            <ion-button expand="block" class="main-button">Order Again</ion-button>
-          </div>
-        </ion-card-content>
-      </ion-card>
-      <ion-card mode="ios">
-        <ion-card-content>
-          <div class="item-img">
-            <img src='../../assets/cart/cart4.png' />
-          </div>
-  
-          <div class="item-info">
-            <p>Women shirt</p>
-            <p>Plus Point</p>
-            <p>$54.00</p>
-  
-            <ion-button expand="block" class="main-button">Order Again</ion-button>
-          </div>
-        </ion-card-content>
-      </ion-card>
-      <ion-card mode="ios">
-        <ion-card-content>
-          <div class="item-img">
-            <img src='../../assets/cart/cart5.png' />
-          </div>
-  
-          <div class="item-info">
-            <p>Shirt</p>
-            <p>Cat's Eye</p>
-            <p>$50.00</p>
-  
-            <ion-button expand="block" class="main-button">Order Again</ion-button>
+            <p>{{myAnnounce.first_name}}</p>
+            <p>{{myAnnounce.last_name}}</p>
+            <p>{{myAnnounce.contact_phone}}</p>
+            <ion-button expand="block" (click)="delete(myAnnounce.id)" class="main-button">Delete</ion-button>
           </div>
         </ion-card-content>
       </ion-card>
     </div>
-    </div>
+  </div>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div
+      class="full-width flex align-items-center justify-content-space-between ion-padding-horizontal"
+    >
+      <ion-button
+        style="width: 120px"
+        strong
+        class="back-button"
+        [routerLink]="['/home']"
+      >
+        <span>Back</span>
+        <ion-icon slot="start" name="chevron-back"></ion-icon>
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

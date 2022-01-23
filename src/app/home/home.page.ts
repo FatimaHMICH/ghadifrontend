@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {  NavController } from '@ionic/angular';
 import { DataService } from '../data.service';
+import { HomeService } from '../service/home.service';
 
 @Component({
   selector: 'app-home',
@@ -9,33 +10,68 @@ import { DataService } from '../data.service';
 })
 export class HomePage implements OnInit {
   public categories = [];
-  public featuredProducts = [];
-  public bestSellProducts = [];
-
-  public client: any;
-  public driver: any;
+  public todaysAnnounces = [];
+  public allAnnounces = [];
 
   constructor(
     private data: DataService,
     private navCtrl: NavController,
+    private homeService: HomeService
   ) { }
 
   ngOnInit() {
-    this.categories = this.data.getCategories();
-    this.featuredProducts = this.data.getFeaturedProducts();
-    this.bestSellProducts = this.data.getBestSellProducts();
+
     if (localStorage.getItem('type') == 'client') {
-      this.client = 'client';
-     
+      this.categories = this.data.getDriverCategories();
+      this.homeService.getDateDriver().subscribe(
+        (response) => {
+          this.todaysAnnounces = response;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+      this.homeService.getAllDrivers().subscribe(
+        (response) => {
+          this.allAnnounces = response;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
     }
     else {
-      this.driver = 'driver';
+      this.categories = this.data.getClientCategories();
+      this.homeService.getDateClient().subscribe(
+        (response) => {
+          this.todaysAnnounces = response;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+      this.homeService.getAllClients().subscribe(
+        (response) => {
+          this.allAnnounces = response;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
     }
   }
 
   displayAnnounces(category:any){
     localStorage.setItem('cat', category);
     this.navCtrl.navigateRoot('/announces', {
+      animated: true,
+      animationDirection: 'forward',
+    });
+  }
+
+  displayDetail(id:any){
+    localStorage.setItem('id', id);
+    this.navCtrl.navigateRoot('/item-details', {
       animated: true,
       animationDirection: 'forward',
     });

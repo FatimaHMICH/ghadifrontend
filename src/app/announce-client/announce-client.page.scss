@@ -78,7 +78,20 @@ input {
   display: block;
 }
 
-.mybutton{
+.back-button {
+  --border-radius: 5px;
+}
+
+.back-button::after {
+  box-shadow: none !important;
+}
+
+.publish-button {
   float: right;
   width: 120px;
+  --border-radius: 5px;
+}
+
+.publish-button::after {
+  box-shadow: none !important;
 }

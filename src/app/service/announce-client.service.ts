@@ -7,7 +7,7 @@ import { AnnounceClient } from '../announce-client/announceClient.model';
   providedIn: 'root',
 })
 export class AnnounceClientService {
-  apiUrl = 'https://ghadiapp.herokuapp.com/api';
+  apiUrl = ' http://127.0.0.1:8000/api';
 
   constructor(private http: HttpClient) {}
 

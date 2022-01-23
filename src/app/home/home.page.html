@@ -25,11 +25,8 @@
     </ion-item>
   </div>
  
-
-   
   <div class="title ion-padding">
     <h2>Categories</h2>
-    <p>See all</p>
   </div>
 
   <div class="category-slider ion-padding-start">
@@ -43,35 +40,35 @@
     </ion-slides>
   </div>
 
-  <div class="title ion-padding">
-    <h2 class="font-bold">New</h2>
-    <p>See all</p>
+
+  <div *ngIf="todaysAnnounces[0]" class="title ion-padding">
+    <h2 class="font-bold">Today's announces</h2>
   </div>
 
-  <div class="product-slider ion-padding-start">
+  <div *ngIf="todaysAnnounces[0]" class="product-slider ion-padding-start">
     <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }">
-      <ion-slide *ngFor="let product of featuredProducts">
-        <ion-col class="ion-text-left" routerLink="/item-details" routerDirection="forward">
-          <img src="{{ product.image }}" />
-          <p>${{ product.price }}</p>
-          <h6>{{ product.name }}</h6>
+      <ion-slide *ngFor="let todaysAnnounce of todaysAnnounces">
+        <ion-col class="ion-text-left" (click)="displayDetail(todaysAnnounce.id)">
+          <img src="{{ todaysAnnounce.image }}" />
+          <p>{{ todaysAnnounce.first_name }} {{ todaysAnnounce.last_name }}</p>
+          <h6>{{ todaysAnnounce.contact_phone }}</h6>
         </ion-col>
       </ion-slide>
     </ion-slides>
   </div>
 
-  <div class="title ion-padding">
-    <h2 class="font-bold">Best Drivers</h2>
-    <p>See all</p>
+
+  <div *ngIf="allAnnounces[0]" class="title ion-padding">
+    <h2 class="font-bold">All announces</h2>
   </div>
 
-  <div class="product-slider ion-padding-start">
+  <div *ngIf="allAnnounces[0]" class="product-slider ion-padding-start">
     <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }">
-      <ion-slide *ngFor="let product of bestSellProducts">
-        <ion-col class="ion-text-left" routerLink="/item-details" routerDirection="forward">
-          <img src="{{ product.image }}" />
-          <p>${{ product.price }}</p>
-          <h6>{{ product.name }}</h6>
+      <ion-slide *ngFor="let allAnnounce of allAnnounces">
+        <ion-col class="ion-text-left" (click)="displayDetail(allAnnounce.id)">
+          <img src="{{ allAnnounce.image }}" />
+          <p>{{ allAnnounce.first_name }} {{ allAnnounce.last_name }}</p>
+          <h6>{{ allAnnounce.contact_phone }}</h6>
         </ion-col>
       </ion-slide>
     </ion-slides>

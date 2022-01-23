@@ -28,8 +28,6 @@
                     <ion-input
                       type="text"
                       formControlName="first_name"
-                      minlength="2"
-                      maxlength="20"
                     ></ion-input>
                   </ion-item>
                   <ion-text color="danger">
@@ -47,8 +45,6 @@
                     <ion-input
                       type="text"
                       formControlName="last_name"
-                      minlength="2"
-                      maxlength="20"
                     ></ion-input>
                   </ion-item>
                   <ion-text color="danger">
@@ -70,8 +66,6 @@
                       type="text"
                       formControlName="starting_address"
                       placeholder="Ain chok, Casablanca."
-                      minlength="5"
-                      maxlength="50"
                     ></ion-input>
                   </ion-item>
                   <ion-text color="danger">
@@ -90,8 +84,6 @@
                       type="text"
                       formControlName="arrival_address"
                       placeholder="Gueliz, Marrakech."
-                      minlength="5"
-                      maxlength="50"
                     ></ion-input>
                   </ion-item>
                   <ion-text color="danger">
@@ -229,8 +221,6 @@
                       <ion-input
                         type="text"
                         formControlName="first_name"
-                        minlength="2"
-                        maxlength="20"
                       ></ion-input>
                     </ion-item>
                     <ion-text color="danger">
@@ -253,8 +243,6 @@
                       <ion-input
                         type="text"
                         formControlName="last_name"
-                        minlength="2"
-                        maxlength="20"
                       ></ion-input>
                     </ion-item>
                     <ion-text color="danger">
@@ -281,8 +269,6 @@
                         type="text"
                         formControlName="address"
                         placeholder="Hay el osra, Ain chok, Casablanca."
-                        minlength="5"
-                        maxlength="50"
                       ></ion-input>
                     </ion-item>
                     <ion-text color="danger">
@@ -414,8 +400,7 @@
       <ion-button
         style="width: 120px"
         strong
-        shape="round"
-        color="dark"
+        class="back-button"
         [routerLink]="['/home']"
         (click)="onBackButtonTouched()"
       >
@@ -423,15 +408,12 @@
         <ion-icon slot="start" name="chevron-back"></ion-icon>
       </ion-button>
       <ion-button
-        style="width: 120px"
         strong
-        class="mybutton"
-        shape="round"
         color="success"
+        class="publish-button"
+        expand="block"
         [style.visibility]="isEnd ? 'hidden' : ''"
-        (click)="onNextButtonTouched()"
-        [disabled]="shippingForm.invalid"
-      >
+        (click)="onNextButtonTouched()"      >
         <span>Publish</span>
       </ion-button>
     </div>
